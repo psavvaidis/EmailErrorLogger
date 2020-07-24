@@ -27,9 +27,3 @@ def buildMessage(message, *msg_args, param_prefix='@'):
         message = message.replace(params[index], arg)
 
     return message
-
-
-if __name__ == '__main__':
-    testText = '@This is a @test @message for a random email to john@doe.com'
-
-    buildMessage(testText, 'It', 'awesome', 'doodle')

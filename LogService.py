@@ -1,9 +1,6 @@
 import pickle
-import gmail_api.connect as gmail
 from campaign import Campaign
 from os import path
-from gmail_api.utils.messages import *
-from gmail_api.utils.labels import *
 
 class LogService:
     campaigns = []
@@ -14,12 +11,6 @@ class LogService:
 
     def __str__(self):
         return "Log Service"
-
-    def connect(self):
-        return gmail.connect()
-
-    def log(self, msg):
-        pass
 
     def createCampaign(self, title, sender, recipients, subj, body):
         newCampaign = Campaign(title, sender, recipients, message_subj=subj, message_body=body)

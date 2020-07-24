@@ -1,5 +1,8 @@
-import pickle, json, random, time
+import pickle, json, random, time, helpers
+import gmail_api.connect as gmail
 from os import path
+from gmail_api.utils.messages import *
+from gmail_api.utils.labels import *
 
 class Campaign:
     _id: int
@@ -30,3 +33,17 @@ class Campaign:
 
     def updateBody(self, body):
         self._body = body
+
+    def log(self, *msg_params):
+        client = self.connect()
+        body_text = helpers.buildText(self._body, msg_params)
+        try:
+            message = CreateMessage(self._sender, self._recipients, self._subject, body_text)
+            SendMessage(client, 'me', message)
+        except:
+            pass
+
+        # TODO Finish the method
+
+    def connect(self):
+        return gmail.connect()

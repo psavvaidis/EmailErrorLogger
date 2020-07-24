@@ -24,9 +24,9 @@ def buildMessage(message, *msg_args, param_prefix='@'):
         raise WrongNumberOfArguments
 
     for index, arg in enumerate(msg_args):
-        # print(params[index], arg)
         message = message.replace(params[index], arg)
-    print(params, msg_args, message)
+
+    return message
 
 
 if __name__ == '__main__':

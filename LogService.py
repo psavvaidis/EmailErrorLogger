@@ -1,6 +1,6 @@
 import pickle
 import gmail_api.connect as gmail
-from models import Campaign
+from campaign import Campaign
 from os import path
 from gmail_api.utils.messages import *
 from gmail_api.utils.labels import *

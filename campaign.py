@@ -1,7 +1,6 @@
 import pickle, json, random, time
 from os import path
 
-
 class Campaign:
     _id: int
 
@@ -25,3 +24,9 @@ class Campaign:
 
     def getTitle(self):
         return self._title
+
+    def updateSubject(self, subject):
+        self._subject = subject
+
+    def updateBody(self, body):
+        self._body = body

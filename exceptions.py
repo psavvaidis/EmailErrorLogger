@@ -1,0 +1,2 @@
+class WrongNumberOfArguments(TypeError):
+    pass

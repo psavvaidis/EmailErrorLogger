@@ -1,9 +1,9 @@
-##Kokotas E-shop Error Logger
+## Kokotas E-shop Error Logger
 This is a tool for sending error messages through email using the Gmail API.
 
 Author: Panagiotis Savvaidis
 
-##Contents:
+## Contents:
 * [Introduction](#introduction)
 * [Set Up](#set-up)
     * Importing the package

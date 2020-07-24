@@ -12,18 +12,18 @@ def loadCampaign(self, campaignID):
             campaign = pickle.load(camp_file)
 
 
-def buildMessage(message, *msg_args, param_prefix='@'):
+def buildText(text, *txt_args, param_prefix='@'):
     params = []
 
     # Extracting and striping white spaces from params
-    for param, arg in re.findall(r'((^| )' + param_prefix + '\w+)', message):
+    for param, arg in re.findall(r'((^| )' + param_prefix + '\w+)', text):
         param = re.sub(" ", "", param)
         params.append(param)
 
-    if not len(params) == len(msg_args):
+    if not len(params) == len(txt_args):
         raise WrongNumberOfArguments
 
-    for index, arg in enumerate(msg_args):
-        message = message.replace(params[index], arg)
+    for index, arg in enumerate(txt_args):
+        text = text.replace(params[index], arg)
 
-    return message
+    return text

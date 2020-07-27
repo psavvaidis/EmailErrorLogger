@@ -6,10 +6,20 @@ import re
 from exceptions import WrongNumberOfArguments
 
 
-def loadCampaign(self, campaignID):
-    if path.exists(f'/resources/campaign_{campaignID}.pickle'):
-        with open(f'/resources/campaign_{campaignID}.pickle', "rb") as camp_file:
+def loadCampaign(campaignID):
+    if path.exists(path.dirname(__file__) + f'/resources/campaign_{campaignID}.pickle'):
+        with open(path.dirname(__file__) + f'/resources/campaign_{campaignID}.pickle', "rb") as camp_file:
             campaign = pickle.load(camp_file)
+            return campaign
+    return None
+
+
+def loadCampaigns():
+    if path.exists(path.dirname(__file__) + '/resources/campaigns.pickle'):
+        with open(path.dirname(__file__) + '/resources/campaigns.pickle', "rb") as camp_file:
+            return pickle.load(camp_file)
+    else:
+        return []
 
 
 def buildText(text, *txt_args, param_prefix='@'):

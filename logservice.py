@@ -25,18 +25,14 @@ class LogService:
         return newCampaign
 
     def save(self):
-        with open(f'/resources/campaigns.pickle', "wb") as camp_file:
+        with open(path.dirname(__file__) + f'/resources/campaigns.pickle', "wb") as camp_file:
             pickle.dump(self.campaigns, camp_file)
 
         for campaign in self.campaigns:
             campaign.save()
 
     def loadCampaigns(self):
-        if path.exists('/resources/campaigns.pickle'):
-            with open('/resources/campaigns.pickle', "rb") as camp_file:
-                return pickle.load(camp_file)
-        else:
-            return []
+        return helpers.loadCampaigns()
 
     def log(self, campaign, *msg_params):
         """

@@ -51,10 +51,15 @@ class LogService:
         """
 
         body_text = helpers.buildText(campaign.getBody(), msg_params)
+
         try:
             message = CreateMessage(campaign.getSender(), campaign.getRecipients(), campaign.getSubject(), body_text)
             SendMessage(self._gClient, 'me', message)
+            print('Message Sent Successfully')
+            return True
         except e.WrongNumberOfArguments as err:
-            print(err)
-
-        # TODO Finish the method
+            print(f'Sending message failed - {err}')
+        except:
+            print('Sending message failed - Unknown error occurred')
+        finally:
+            return False

@@ -40,13 +40,8 @@ def buildText(text, *txt_args, param_prefix='@'):
 
 
 def updateCampaign(campaign, title=None, sender=None, recipients=None, subject=None, body=None):
-    if title:
-        campaign.updateTitle(title)
-    if sender:
-        campaign.updateSender()
-    if recipients:
-        campaign.addRecipients(recipients)
-    if subject:
-        campaign.updateSubject(subject)
-    if body:
-        campaign.updateBody(body)
+    campaign.updateTitle(title) if title else None
+    campaign.updateSender(sender) if sender else None
+    campaign.addRecipients(recipients) if recipients else None
+    campaign.updateSubject(subject) if subject else None
+    campaign.updateBody(body) if body else None

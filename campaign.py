@@ -19,7 +19,11 @@ class Campaign:
         return f'Campaign {self._title}'
 
     def save(self):
-        with open(f'campaign_{self._id}.pickle', "wb") as camp_file:
+        """
+        Saves the campaign to a pickle file
+        :return: null
+        """
+        with open(f'/resources/campaign_{self._id}.pickle', "wb") as camp_file:
             pickle.dump(self, camp_file)
 
     def getID(self):
@@ -28,22 +32,23 @@ class Campaign:
     def getTitle(self):
         return self._title
 
+    def getBody(self):
+        return self._body
+
+    def getSubject(self):
+        return self._subject
+
+    def getSender(self):
+        return self._sender
+
+    def getRecipients(self):
+        return self._recipients
+
     def updateSubject(self, subject):
         self._subject = subject
 
     def updateBody(self, body):
         self._body = body
 
-    def log(self, *msg_params):
-        client = self.connect()
-        body_text = helpers.buildText(self._body, msg_params)
-        try:
-            message = CreateMessage(self._sender, self._recipients, self._subject, body_text)
-            SendMessage(client, 'me', message)
-        except:
-            pass
 
-        # TODO Finish the method
 
-    def connect(self):
-        return gmail.connect()

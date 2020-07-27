@@ -21,7 +21,7 @@ def buildText(text, *txt_args, param_prefix='@'):
         params.append(param)
 
     if not len(params) == len(txt_args):
-        raise WrongNumberOfArguments
+        raise WrongNumberOfArguments(f'{len(params)} argument(s) expected ({params})')
 
     for index, arg in enumerate(txt_args):
         text = text.replace(params[index], arg)

@@ -1,6 +1,9 @@
-import pickle
+import pickle, helpers
+import exceptions as e
 from campaign import Campaign
 from os import path
+from gmail_api.utils.messages import *
+from gmail_api.utils.labels import *
 
 class LogService:
     campaigns = []
@@ -33,3 +36,24 @@ class LogService:
                 return pickle.load(camp_file)
         else:
             return []
+
+    def log(self, campaign, *msg_params):
+        """
+        Sends the message
+
+        First, the message is constructed by combining the default campaign message and the message args
+        Then, it sends the message through the GMAIL API
+
+        :param campaign: the current campaign sending the message for
+        :param msg_params: unknown number of
+        :return: success or failure feedback
+        """
+
+        body_text = helpers.buildText(campaign.getBody(), msg_params)
+        try:
+            message = CreateMessage(campaign.getSender(), campaign.getRecipients(), campaign.getSubject(), body_text)
+            SendMessage(self._gClient, 'me', message)
+        except e.WrongNumberOfArguments as err:
+            print(err)
+
+        # TODO Finish the method

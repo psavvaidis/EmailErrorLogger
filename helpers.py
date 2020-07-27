@@ -1,5 +1,4 @@
 import pickle
-from functools import reduce
 from os import path
 import re
 

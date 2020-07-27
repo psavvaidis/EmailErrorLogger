@@ -1,4 +1,4 @@
-import unittest
+import unittest, helpers
 from logservice import LogService
 from campaign import Campaign
 
@@ -23,3 +23,12 @@ class TestOperations(unittest.TestCase):
         self.assertIsInstance(dummyCampaign, Campaign)
         print(self._service.campaigns)
         self._service.save()
+
+
+class TestReloadSession(unittest.TestCase):
+    service = LogService()
+    campaignObjects = []
+
+    def test_printPreviousData(self):
+        for campaign in self.service.campaigns:
+            print(helpers.loadCampaign(campaign['id']))

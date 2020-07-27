@@ -1,8 +1,5 @@
-import pickle, json, random, time, helpers
-import gmail_api.connect as gmail
+import pickle, random
 from os import path
-from gmail_api.utils.messages import *
-from gmail_api.utils.labels import *
 
 class Campaign:
     _id: int
@@ -21,7 +18,7 @@ class Campaign:
                f'from {self._sender}\n' \
                f'to {self._recipients}\n' \
                f'Subject: {self._subject}\n' \
-               f'\n{self._body}'
+               f'\n{self._body}\n---------------------------------\n'
 
     def save(self):
         """

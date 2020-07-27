@@ -37,3 +37,16 @@ def buildText(text, *txt_args, param_prefix='@'):
         text = text.replace(params[index], arg)
 
     return text
+
+
+def updateCampaign(campaign, title=None, sender=None, recipients=None, subject=None, body=None):
+    if title:
+        campaign.updateTitle(title)
+    if sender:
+        campaign.updateSender()
+    if recipients:
+        campaign.addRecipients(recipients)
+    if subject:
+        campaign.updateSubject(subject)
+    if body:
+        campaign.updateBody(body)

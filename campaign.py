@@ -55,5 +55,16 @@ class Campaign:
     def updateBody(self, body):
         self._body = body
 
+    def updateTitle(self, title):
+        self._title = title
 
+    def updateSender(self, sender):
+        self._sender = sender
 
+    def addRecipients(self, recipients):
+        for r in recipients:
+            self._recipients.append(r)
+
+    def setRecipients(self, recipients):
+        self._recipients = []
+        self._recipients.append(recipients)

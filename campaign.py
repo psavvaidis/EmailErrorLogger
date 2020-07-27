@@ -17,7 +17,11 @@ class Campaign:
         self._body = message_body
 
     def __str__(self):
-        return f'Campaign "{self._title}" with id {self._id}'
+        return f'Campaign "{self._title}" with id {self._id}\n' \
+               f'from {self._sender}\n' \
+               f'to {self._recipients}\n' \
+               f'Subject: {self._subject}\n' \
+               f'\n{self._body}'
 
     def save(self):
         """

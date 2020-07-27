@@ -7,7 +7,7 @@ class WrongNumberOfArguments(TypeError):
         return f'Wrong number of arguments was passed. {self._message}'
 
 
-class APICredentialsNotFound(Exception):
+class APICredentialsNotFound(FileNotFoundError):
 
     def __str__(self):
         return 'File credentials.json not found. Visit Gmail API website to ask for credentials.json file.\n\n' \

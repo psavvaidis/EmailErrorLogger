@@ -44,3 +44,4 @@ def updateCampaign(campaign, title=None, sender=None, recipients=None, subject=N
     campaign.addRecipients(recipients) if recipients else None
     campaign.updateSubject(subject) if subject else None
     campaign.updateBody(body) if body else None
+    campaign.save()

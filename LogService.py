@@ -2,6 +2,7 @@ import pickle, helpers
 import exceptions as e
 from campaign import Campaign
 from os import path
+from gmail_api.connect import *
 from gmail_api.utils.messages import *
 from gmail_api.utils.labels import *
 
@@ -9,7 +10,7 @@ class LogService:
     campaigns = []
 
     def __init__(self):
-        self._gClient = self.connect()
+        self._gClient = connect()
         self.campaigns = self.loadCampaigns()
 
     def __str__(self):
@@ -45,7 +46,7 @@ class LogService:
         Then, it sends the message through the GMAIL API
 
         :param campaign: the current campaign sending the message for
-        :param msg_params: unknown number of
+        :param msg_params: unknown number of message parameters
         :return: success or failure feedback
         """
 

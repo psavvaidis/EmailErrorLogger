@@ -22,14 +22,17 @@ class LogService:
         while newCampaign.getID() in self.campaigns:
             newCampaign = Campaign(title, sender, recipients, message_subj=subj, message_body=body)
 
+        self.campaigns.append({'id': newCampaign.getID(), 'title': title})
+        newCampaign.save()
         return newCampaign
 
     def save(self):
-        with open(path.dirname(__file__) + f'/resources/campaigns.pickle', "wb") as camp_file:
-            pickle.dump(self.campaigns, camp_file)
-
-        for campaign in self.campaigns:
-            campaign.save()
+        try:
+            with open(path.dirname(__file__) + f'/resources/campaigns.pickle', "wb") as camp_file:
+                pickle.dump(self.campaigns, camp_file)
+        except Exception as e:
+            print(f'Couldn\'t save campaigns.pickle. {e}')
+            return False
 
     def loadCampaigns(self):
         return helpers.loadCampaigns()

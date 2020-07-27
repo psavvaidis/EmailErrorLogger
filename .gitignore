@@ -1,2 +1,4 @@
 # ignore Gmail API credentials.json
 credentials.json
+token.pickle
+resources/*

@@ -8,7 +8,8 @@ class Campaign:
     _id: int
 
     def __init__(self, title, sender, *recipients, message_subj=None, message_body=None):
-        self._id = random.seed(time.time())
+        random.seed()
+        self._id = random.randint(1, 100000000)
         self._title = title
         self._sender = sender
         self._recipients = recipients
@@ -16,15 +17,19 @@ class Campaign:
         self._body = message_body
 
     def __str__(self):
-        return f'Campaign {self._title}'
+        return f'Campaign "{self._title}" with id {self._id}'
 
     def save(self):
         """
         Saves the campaign to a pickle file
         :return: null
         """
-        with open(f'/resources/campaign_{self._id}.pickle', "wb") as camp_file:
-            pickle.dump(self, camp_file)
+        try:
+            with open(path.dirname(__file__) + f'/resources/campaign_{self._id}.pickle', "wb") as camp_file:
+                pickle.dump(self, camp_file)
+                return True
+        except:
+            return False
 
     def getID(self):
         return self._id

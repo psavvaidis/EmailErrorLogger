@@ -49,7 +49,7 @@ class LogService:
         :return: success or failure feedback
         """
 
-        body_text = helpers.buildText(campaign.getBody(), msg_params)
+        body_text = helpers.buildText(campaign.getBody(), *msg_params)
 
         try:
             message = CreateMessage(campaign.getSender(), campaign.getRecipients(), campaign.getSubject(), body_text)

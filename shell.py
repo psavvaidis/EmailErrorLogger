@@ -23,6 +23,7 @@ def printMenu():
 
 # The User Interface
 print("\n\tWelcome to Email Error Logger\n\n")
+# TODO A lot of work to finish the menu
 service = LogService()
 while True:
     option = printMenu()

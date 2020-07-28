@@ -53,6 +53,7 @@ class LogService:
 
         try:
             message = CreateMessage(campaign.getSender(), campaign.getRecipients(), campaign.getSubject(), body_text)
+            print(f'Message is \n{message}')
             SendMessage(self._gClient, 'me', message)
             print('Message Sent Successfully')
             return True
